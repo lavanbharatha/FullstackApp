@@ -1,0 +1,104 @@
+
+  <h2>Student Registration Form</h2>
+  
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="mt-4">
+    <div class="mb-3">
+      <label for="name" class="form-label">Full Name</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="name" 
+        formControlName="name"
+        [ngClass]="{'is-invalid': submitted && f['name'].errors}">
+      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+        <div *ngIf="f['name'].errors['required']">Name is required</div>
+        <div *ngIf="f['name'].errors['minlength']">Name must be at least 3 characters</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input 
+        type="number" 
+        class="form-control" 
+        id="age" 
+        formControlName="age"
+        [ngClass]="{'is-invalid': submitted && f['age'].errors}">
+      <div *ngIf="submitted && f['age'].errors" class="invalid-feedback">
+        <div *ngIf="f['age'].errors['required']">Age is required</div>
+        <div *ngIf="f['age'].errors['min']">Age must be at least 15</div>
+        <div *ngIf="f['age'].errors['max']">Age cannot be more than 30</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="locality" class="form-label">Locality</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="locality" 
+        formControlName="locality"
+        [ngClass]="{'is-invalid': submitted && f['locality'].errors}">
+      <div *ngIf="submitted && f['locality'].errors" class="invalid-feedback">
+        <div *ngIf="f['locality'].errors['required']">Locality is required</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input 
+        type="email" 
+        class="form-control" 
+        id="email" 
+        formControlName="email"
+        [ngClass]="{'is-invalid': submitted && f['email'].errors}">
+      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+        <div *ngIf="f['email'].errors['required']">Email is required</div>
+        <div *ngIf="f['email'].errors['email']">Please enter a valid email</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone Number</label>
+      <input 
+        type="tel" 
+        class="form-control" 
+        id="phone" 
+        formControlName="phone"
+        [ngClass]="{'is-invalid': submitted && f['phone'].errors}">
+      <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+        <div *ngIf="f['phone'].errors['required']">Phone number is required</div>
+        <div *ngIf="f['phone'].errors['pattern']">Please enter a valid 10-digit phone number</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+  <!-- Student List -->
+  <div class="mt-5 total">
+    <h3>Registered Students</h3>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="table-header">
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Locality</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <td>{{student.name}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.locality}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.phone}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
