@@ -21,7 +21,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy built Angular app to Nginx's HTML directory
-COPY --from=build /app/dist/<your-app-name> /usr/share/nginx/html
+COPY --from=build /app/dist/frontend /usr/share/nginx/html
 
 # Copy custom nginx config (optional)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
