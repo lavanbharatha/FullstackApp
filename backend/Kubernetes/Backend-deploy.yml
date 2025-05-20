@@ -12,6 +12,10 @@ spec:
       labels:
         app: springboot
     spec:
+      initContainers:
+        - name: wait-for-mysql
+          image: busybox
+          command: ['sh', '-c', 'until nc -z mysql 3306; do echo waiting for mysql; sleep 5; done;']
       containers:
         - name: springboot
           image: lavanbharatha/backend:latest
@@ -24,4 +28,3 @@ spec:
               value: root
             - name: SPRING_DATASOURCE_PASSWORD
               value: Lavan@167
-
