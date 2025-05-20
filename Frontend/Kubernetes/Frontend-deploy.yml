@@ -17,3 +17,5 @@ spec:
           image: lavanbharatha/frontend:latest
           ports:
             - containerPort: 80
+
+            
