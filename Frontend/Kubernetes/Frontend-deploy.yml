@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: angular
-          image: your-dockerhub-username/angular-app:latest
+          image: lavanbharatha/frontend:latest
           ports:
             - containerPort: 80
